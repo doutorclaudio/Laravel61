@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 class TarefasController extends Controller
 {
     public function list(){
-        dd(env('APP_NAME'));
-        $list = DB::select('SELECT * FROM tarefas WHERE resolvido = ?', [1]);
+        //dd(env('APP_NAME'));
+        $list = DB::select('SELECT * FROM tarefas');// WHERE resolvido = ?', [1]);
 
         return view('tarefas.list', [
             'list' => $list
