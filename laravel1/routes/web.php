@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController');
 Route::view('/teste', 'teste');
 
+Route::get('/login','Auth\LoginController@index')->name('login');
+Route::post('/login','Auth\LoginController@authenticate');
+
+Route::get('/register', 'Auth\RegisterController@index')->name('register');
+Route::post('/register', 'Auth\RegisterController@register');
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::resource('todo', 'TodoController');
 /*
 
@@ -37,7 +45,7 @@ Route::prefix('/tarefas')->group(function(){
 
 Route::prefix('/config')->group(function(){ 
 
-    Route::get('/', 'Admin\ConfigController@index');
+    Route::get('/', 'Admin\ConfigController@index')->name('config.index');
     Route::post('/', 'Admin\ConfigController@index');
 
     Route::get('info', 'Admin\ConfigController@info');
